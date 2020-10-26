@@ -8,6 +8,9 @@
         "remove": "Remove"
     },
     "commands": {
+        "commandPing": {
+            "rights": "Permissions"
+        },
         "commandPwAll": {
             "rights": "Permissions",
             "message": {
@@ -93,7 +96,7 @@
             "channel": "Channel that runs functions",
             "groups": "Groups the poke will be sent to",
             "poke": {
-                "key": "Father-in-law poke",
+                "key": "Poke content",
                 "value": "Someone is waiting for help"
             },
             "messageSuccess": {

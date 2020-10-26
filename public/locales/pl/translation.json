@@ -8,6 +8,9 @@
         "remove": "Usuń"
     },
     "commands": {
+        "commandPing": {
+            "rights": "Uprawnienia"
+        },
         "commandPwAll": {
             "rights": "Uprawnienia",
             "message": {
@@ -93,7 +96,7 @@
             "channel": "Kanał, który uruchamia funkcje",
             "groups": "Grupy do których wysłany zostanie poke",
             "poke": {
-                "key": "Teść poke",
+                "key": "Treść poke",
                 "value": "Ktoś oczekuje na pomoc"
             },
             "messageSuccess": {

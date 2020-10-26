@@ -5,6 +5,7 @@ import BlockButton from '../../ui/BlockButton';
 import { Card, Chip, Grid, Input, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { getServerGroups } from '../../redux/actions/ServerGroupsActions';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 
 
 class Test extends Component {
@@ -30,11 +31,14 @@ class Test extends Component {
 
 
     render() {
+
+        const { t } = this.props;
+
         return <Fragment>
             <Grid item xs={12} md={12} lg={12}>
                 {this.props.data.length === 0 ? <Alert style={{
                     marginBottom: "1.5rem"
-                }} elevation={6} variant="filled" severity="info"> Adjust conf before using </Alert> : null}
+                }} elevation={6} variant="filled" severity="info">{t("system.setupFirst")}</Alert> : null}
                 <Card style={{
                     padding: "1rem 1.5rem",
                     marginBottom: "1.5rem"
@@ -44,7 +48,7 @@ class Test extends Component {
                         onError={(errors) => null}
                         onSubmit={(e) => null}
                     >
-                        <InputLabel id="demo-mutiple-chip-label">Uprawnienia</InputLabel>
+                        <InputLabel id="demo-mutiple-chip-label">{t("commands.commandPing.rights")}</InputLabel>
                         <Select
                             labelid="demo-mutiple-chip-label"
                             id="demo-mutiple-chip"
@@ -71,7 +75,7 @@ class Test extends Component {
                         </Select>
                     </ValidatorForm>
                     <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                        <BlockButton onClick={() => this.send(this.state)} text="Zapisz" />
+                        <BlockButton onClick={() => this.send(this.state)} text={t("system.save")} />
                     </div>
                 </Card>
             </Grid>
@@ -93,4 +97,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Test))

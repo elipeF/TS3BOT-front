@@ -1,0 +1,114 @@
+{
+    "system": {
+        "elementNotFound": "Configuration item is missing",
+        "selectFromMenu": "Select items from the menu",
+        "setupFirst": "You must configure the function before you can start using it",
+        "save": "Save",
+        "add": "Add",
+        "remove": "Remove"
+    },
+    "commands": {
+        "commandPwAll": {
+            "rights": "Permissions",
+            "message": {
+                "key": "Answer",
+                "value": "Message sent to {counter} users"
+            }
+        },
+        "commandPokeAll": {
+            "rights": "Permissions",
+            "message": {
+                "key": "Answer",
+                "value": "Poke sent to {counter} users"
+            }
+        }
+    },
+    "functions": {
+        "doChannelsCheck": {
+            "interval": "Function execution interval (in seconds)",
+            "prefix": {
+                "key": "Channel Prefix",
+                "value": "{number}."
+            },
+            "freeChannelName": {
+                "key": "Free channel name",
+                "value": "Channel free"
+            },
+            "zone": "zone ID",
+            "validity": "Channel validity in days",
+            "group": "Channel owner group",
+            "guest": "Guest group"
+        },
+        "doNicknameCheck": {
+            "interval": "Function execution interval (in seconds)",
+            "message": {
+                "key": "Kick reason",
+                "value": "Bad word {badword} detected"
+            },
+            "badWords": {
+                "key": "Illegal words (separate with a comma)",
+                "value": "admin, root"
+            },
+            "zone": "zone ID",
+            "validity": "Channel validity in days",
+            "group": "Channel owner group",
+            "guest": "Guest group"
+        },
+        "doServerEdit": {
+            "interval": "Function execution interval (in seconds)",
+            "names": {
+                "key": "Server name",
+                "value": "TS3BOT {online} / {slots} ({percent}%) \nServer managed by TS3BOT"
+            }
+        }
+    },
+    "events": {
+        "getWelcomeMessage": {
+            "message": {
+                "key": "Welcome message",
+                "value": "Hello {nickname} \n\nOn the server: {online} / {slots} \nFirst connection: {firstConnect} \nYou have {totalConnections} connections \n"
+            }
+        },
+        "getPrivateChannel": {
+            "channel": "Channel that runs functions",
+            "prefix": {
+                "key": "Channel Prefix",
+                "value": "{number}."
+            },
+            "channelName": {
+                "key": "Channel name",
+                "value": "Channel {username}"
+            },
+            "subchannelsname": {
+                "key": "Subchannel Name",
+                "value": "{number}. subchannel"
+            },
+            "subchannelscount": "Number of subchannels",
+            "zone": "zone ID",
+            "validity": "Channel validity in days",
+            "group": "Channel owner group",
+            "guest": "Guest group"
+        },
+        "getAdminPoke": {
+            "channel": "Channel that runs functions",
+            "groups": "Groups the poke will be sent to",
+            "poke": {
+                "key": "Father-in-law poke",
+                "value": "Someone is waiting for help"
+            },
+            "messageSuccess": {
+                "key": "Message to the user when admins are on the server",
+                "value": "Admins have been informed"
+            },
+            "messageFail": {
+                "key": "Message to the user when admin is not on the server",
+                "value": "No admins, please try again later"
+            }
+        }
+    },
+    "responses": {
+        "GET_CONFIG_SUCCESS": "Configuration loaded",
+        "UPDATE_CONFIG_SUCCESS": "Configuration saved",
+        "CHANGE_CONFIG_MODE": "Enabled / Disabled functions"
+    }
+}

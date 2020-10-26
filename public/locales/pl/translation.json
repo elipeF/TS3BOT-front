@@ -1,0 +1,114 @@
+{
+    "system": {
+        "elementNotFound": "Brak elementu konfiguracyjnego",
+        "selectFromMenu": "Wybierz pozycje z menu",
+        "setupFirst": "Musisz skonfigurować funkcję zanim zaczniesz jej używać",
+        "save": "Zapisz",
+        "add": "Dodaj",
+        "remove": "Usuń"
+    },
+    "commands": {
+        "commandPwAll": {
+            "rights": "Uprawnienia",
+            "message": {
+                "key": "Odpowiedź",
+                "value": "Wiadomość wysłana do {counter} użytkowników"
+            }
+        },
+        "commandPokeAll": {
+            "rights": "Uprawnienia",
+            "message": {
+                "key": "Odpowiedź",
+                "value": "Poke wysłany do {counter} użytkowników"
+            }
+        }
+    },
+    "functions": {
+        "doChannelsCheck": {
+            "interval": "Interwał wykonywania funckcji(w sekundach)",
+            "prefix": {
+                "key": "Prefix kanału",
+                "value": "{number}. "
+            },
+            "freeChannelName": {
+                "key": "Nazwa kanału wolnego",
+                "value": "Kanał wolny"
+            },
+            "zone": "ID strefy",
+            "validity": "Ważność kanału w dniach",
+            "group": "Grupa właściciela kanału",
+            "guest": "Grupa gościa"
+        },
+        "doNicknameCheck": {
+            "interval": "Interwał wykonywania funckcji(w sekundach)",
+            "message": {
+                "key": "Powód kicka",
+                "value": "Wykryto niedozwolone słowo {badword}"
+            },
+            "badWords": {
+                "key": "Niedozwolone słowa (oddziel przecinkiem)",
+                "value": "admin,root"
+            },
+            "zone": "ID strefy",
+            "validity": "Ważność kanału w dniach",
+            "group": "Grupa właściciela kanału",
+            "guest": "Grupa gościa"
+        },
+        "doServerEdit": {
+            "interval": "Interwał wykonywania funckcji(w sekundach)",
+            "names": {
+                "key": "Nazwy serwera",
+                "value": "TS3BOT {online}/{slots}({percent}%)\nSerwer zarządzany przez TS3BOT"
+            }
+        }
+    },
+    "events": {
+        "getWelcomeMessage": {
+            "message": {
+                "key": "Wiadomość powitalna",
+                "value": "Witaj {nickname}\n\nNa serwerze: {online}/{slots}\nPierwsze połączenie: {firstConnect}\nMasz {totalConnections} połączeń\n"
+            }
+        },
+        "getPrivateChannel": {
+            "channel": "Kanał, który uruchamia funkcje",
+            "prefix": {
+                "key": "Prefix kanału",
+                "value": "{number}. "
+            },
+            "channelName": {
+                "key": "Nazwa kanału",
+                "value": "Kanał {username}"
+            },
+            "subchannelsname": {
+                "key": "Nazwa podkanału",
+                "value": "{number}. podkanał"
+            },
+            "subchannelscount": "Ilość podkanałów",
+            "zone": "ID strefy",
+            "validity": "Ważność kanału w dniach",
+            "group": "Grupa właściciela kanału",
+            "guest": "Grupa gościa"
+        },
+        "getAdminPoke": {
+            "channel": "Kanał, który uruchamia funkcje",
+            "groups": "Grupy do których wysłany zostanie poke",
+            "poke": {
+                "key": "Teść poke",
+                "value": "Ktoś oczekuje na pomoc"
+            },
+            "messageSuccess": {
+                "key": "Wiadomość do użytkownika gdy admini są na serwerze",
+                "value": "Admini zostali poinformowani"
+            },
+            "messageFail": {
+                "key": "Wiadomość do użytkownika gdy adminó nie ma na serwerze",
+                "value": "Brak adminów, spróbuj ponownie później"
+            }
+        }
+    },
+    "responses": {
+        "GET_CONFIG_SUCCESS": "Załadowano konfiguracje",
+        "UPDATE_CONFIG_SUCCESS": "Zapisano konfiguracje",
+        "CHANGE_CONFIG_MODE": "Włączono/Wyłączono funkcje"
+    }
+}

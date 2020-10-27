@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
+import Brightness6Icon from '@material-ui/icons/Brightness6';
 
 import routes from './views/routes'
 import Spinner from './ui/Spinner';
@@ -23,7 +24,7 @@ import Menu from './menu/Menu';
 import { connect } from 'react-redux';
 import { getConfig, updateConfig } from './redux/actions/ConfigActions';
 import NotificationDisplay from './NotificationDisplay';
-import { MenuItem } from '@material-ui/core';
+import { createMuiTheme, MenuItem, ThemeProvider } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -110,7 +111,8 @@ class Dashboard extends Component {
   state = {
     open: true,
     openLangMenu: null,
-    component: <Spinner />
+    component: <Spinner />,
+    darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches
   }
 
   renderComponent(name, loaded = false) {
@@ -186,68 +188,87 @@ class Dashboard extends Component {
     })
   }
 
+  handleLightSwitch() {
+    this.setState((state) => {
+      return {
+        ...state,
+        darkMode: !state.darkMode
+      }
+    })
+  }
+
   render() {
     const { open } = this.state
     const { classes } = this.props
+    const theme = createMuiTheme({
+      palette: {
+        type: this.state.darkMode ? 'dark' : 'light'
+      }
+    });
     return (
-      <div className={classes.root}>
-        <NotificationDisplay />
-        <CssBaseline />
-        <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-          <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => this.handleDrawer()}
-              className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-              TS3BOT
+      <ThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <NotificationDisplay />
+          <CssBaseline />
+          <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <Toolbar className={classes.toolbar}>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => this.handleDrawer()}
+                className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                TS3BOT
           </Typography>
-            <IconButton onClick={(e) => this.handleLangMenuOpen(e)} color="inherit">
-              <GTranslateIcon />
-            </IconButton>
-            <LangMenu.Menu
-              id="simple-menu"
-              anchorEl={this.state.openLangMenu}
-              keepMounted
-              open={Boolean(this.state.openLangMenu)}
-              onClose={() => this.handleLangMenuClose()}
-            >
-              <MenuItem onClick={() => this.handleLangMenuClose('pl')}>Polski</MenuItem>
-              <MenuItem onClick={() => this.handleLangMenuClose('en')}>English</MenuItem>
-            </LangMenu.Menu>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-          }}
-          open={open}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={() => this.handleDrawer()}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <Menu />
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth={false} className={classes.container}>
-            <Grid container spacing={3}>
-              <Suspense fallback={<Spinner />}>
-                {this.state.component}
-              </Suspense>
-            </Grid>
-          </Container>
-        </main>
-      </div >
+              <IconButton onClick={() => this.handleLightSwitch()} color="inherit">
+                <Brightness6Icon />
+              </IconButton>
+              <IconButton onClick={(e) => this.handleLangMenuOpen(e)} color="inherit">
+                <GTranslateIcon />
+              </IconButton>
+              <LangMenu.Menu
+                id="simple-menu"
+                anchorEl={this.state.openLangMenu}
+                keepMounted
+                open={Boolean(this.state.openLangMenu)}
+                onClose={() => this.handleLangMenuClose()}
+              >
+                <MenuItem onClick={() => this.handleLangMenuClose('pl')}>Polski</MenuItem>
+                <MenuItem onClick={() => this.handleLangMenuClose('en')}>English</MenuItem>
+              </LangMenu.Menu>
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+            }}
+            open={open}
+          >
+            <div className={classes.toolbarIcon}>
+              <IconButton onClick={() => this.handleDrawer()}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </div>
+            <Divider />
+            <Menu />
+          </Drawer>
+          <main className={classes.content}>
+            <div className={classes.appBarSpacer} />
+            <Container maxWidth={false} className={classes.container}>
+              <Grid container spacing={3}>
+                <Suspense fallback={<Spinner />}>
+                  {this.state.component}
+                </Suspense>
+              </Grid>
+            </Container>
+          </main>
+        </div >
+      </ThemeProvider>
     );
   }
 }
